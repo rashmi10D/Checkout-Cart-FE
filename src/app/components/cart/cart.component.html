@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="lg">
+      <div class="row">
+        <strong>CART ITEMS:</strong>
+        <table class="table" *ngIf="cartitems">
+          <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Quantity</th>
+            <th>Total Price(Rs)</th>
+            <th>Discount(Rs)</th>
+            <th>Discounted Price(Rs)</th>
+          </tr>
+          <tr *ngFor="let item of cartitems.items">
+            <td>{{ item.product }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+              {{ item.quantity }}
+              <span style="padding-left: 0%">
+                <button
+                  class="btn btn-link"
+                  (click)="addQTY(item.productId, 1)"
+                >
+                  +
+                </button>
+              </span>
+            </td>
+            <td>{{ item.subTotal }}</td>
+            <td>{{ item.discount }}</td>
+            <td>{{ item.total }}</td>
+          </tr>
+            <tr style="text-align: right;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><strong><p style="color: blueviolet;">Discount on the Total Cart </p>Rs {{cartitems.discount}}</strong></td>
+                <td><strong><p style="color: blueviolet;">Total Basket Cost </p>Rs {{cartitems.subTotal}}</strong></td>
+                <td><strong><p style="color: blueviolet">Total Discounted Basket Cost </p>Rs {{cartitems.total}}</strong></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
